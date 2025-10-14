@@ -145,3 +145,170 @@ RIFT embodies OBINexus’ **human-centric design law**:
 In practice, that means:
 
 > *RIFT listens before it compiles.*
+
+
+
+### **Example: PseudoC Input**
+
+```c
+// file: example.rf
+
+// Simple dynamic/static demonstration
+let x = R''("input value");     // dynamic runtime string
+let y = R""("static value");    // compile-time string literal
+
+// Function definition using relaxed syntax
+fn greet(name) {
+    print("Hello, " + name);
+    return 0;
+}
+
+// Conditional and loop constructs
+if (x != "") {
+    greet(x);
+} else {
+    while (true) {
+        greet(y);
+        break;
+    }
+}
+```
+
+---
+
+### **Stage 0 → Tokenizer Output**
+
+RIFT tokenizes into a lightweight stream (`rift_token_t[]`):
+
+```
+LET IDENT(x) ASSIGN R'' STRING("input value")
+LET IDENT(y) ASSIGN R"" STRING("static value")
+FN IDENT(greet) LPAREN IDENT(name) RPAREN LBRACE ...
+```
+
+Each token carries source-location metadata and type info for later semantic analysis.
+
+---
+
+### **Stage 1 → Parser Output (AST)**
+
+The parser described in your header would construct something like:
+
+```
+AST_PROGRAM
+ ├─ AST_DECLARATION  ("x" = R'')
+ ├─ AST_DECLARATION  ("y" = R"")
+ ├─ AST_FUNCTION_CALL (fn greet)
+ │    └─ AST_BLOCK
+ │        ├─ AST_STATEMENT (print)
+ │        └─ AST_RETURN_STATEMENT (0)
+ └─ AST_IF_STATEMENT
+      ├─ condition: AST_BINARY_OP ("x" != "")
+      ├─ then:  AST_FUNCTION_CALL (greet x)
+      └─ else:  AST_WHILE_LOOP (true)
+                 ├─ AST_FUNCTION_CALL (greet y)
+                 └─ AST_BREAK
+```
+
+Every node carries:
+
+* `type` → node category
+* `value` → matched literal or identifier
+* `matched_state` → DFA position from regex matcher
+* `complexity_score` → estimated parse complexity (for optimization later)
+
+---
+
+### **Stage 2 → Semantic Analysis**
+
+At this point the analyzer would:
+
+* Resolve symbol types (`x`, `y`, `greet`)
+* Tag dynamic vs static regions (`R''` vs `R""`)
+* Ensure `print` and `greet` signatures align
+
+---
+
+### **Stage 3 – Emission (C Reduction)**
+
+RIFT then emits C:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int greet(const char* name) {
+    printf("Hello, %s\n", name);
+    return 0;
+}
+
+int main() {
+    char x[64]; strcpy(x, "input value");
+    const char* y = "static value";
+
+    if (strcmp(x, "") != 0) {
+        greet(x);
+    } else {
+        while (1) {
+            greet(y);
+            break;
+        }
+    }
+    return 0;
+}
+```
+
+---
+
+### **CLI Flow**
+
+Same program run through CLI stages:
+
+```bash
+rift tokenize example.rf    → example.tok
+rift parse example.tok      → example.ast
+rift analyze example.ast    → example.tast
+rift generate example.tast  → example.bc
+rift emit example.bc        → example.c
+rift compile example.c      → example.exe
+```
+
+
+---
+
+### **PseudoC Example — Policy Wrapper**
+
+```c
+@policy(warp: "aux_security_check")
+fn transmit(data) {
+    send(data);
+}
+```
+
+---
+
+### **Expansion**
+
+RIFT sees the `@policy` decorator and wraps the function logic automatically:
+
+```c
+int aux_security_check(const char* data) {
+    if (!verify_auth(data)) return -1;
+    return 0;
+}
+
+int transmit(const char* data) {
+    if (aux_security_check(data) != 0) return -1;
+    send(data);
+    return 0;
+}
+```
+
+---
+
+### **Why It Fits OBINexus Philosophy**
+
+* **Human-centric law:** clear declaration of the rule before the code.
+* **Machine-verifiable:** AST tags show both the policy and its scope.
+* **Functional logic alignment:** policies decorate functions, not control flow — separating *what must be enforced* from *what must happen*.
+
