@@ -2,8 +2,8 @@
 ![OBINexus Heartmark Identity](docs/img/favicon.png) 
 
 **OBINexus Computing Division** | **Computing From the Heart**
-![forever in our hearts](./docs/img/OBINexusNnamdi.png)  
-> **The Founder of OBINexus** — Forever in our hearts  
+![forever in our **SOULS**](./docs/img/OBINexusNnamdi.png)  
+> **The Founder of OBINexus** — Forever in our **SOULS**  
 > **Technical Lead:** Nnamdi Michael Okpala 
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#build--toolchain)
@@ -687,4 +687,5 @@ RIFT development maintains alignment with NASA-STD-8739.8 software safety assura
 ---
 
 **RIFT Development Philosophy**: *"Structure IS the syntax. In RIFT, systematic methodology enables technical excellence."*
+
 # rift
