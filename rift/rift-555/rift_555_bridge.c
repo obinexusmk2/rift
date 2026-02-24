@@ -461,6 +461,52 @@ const char* rift_token_type_to_string(TokenType type) {
         case TOKEN_TYPE_OPERATOR: return "OPERATOR";
         case TOKEN_TYPE_DELIMITER: return "DELIMITER";
         case TOKEN_TYPE_EOF: return "EOF";
+        case TOKEN_TYPE_PATTERN_DOUBLE: return "PATTERN_DOUBLE";
+        case TOKEN_TYPE_PATTERN_SINGLE: return "PATTERN_SINGLE";
+        case TOKEN_TYPE_MACRO_DEF: return "MACRO_DEF";
         default: return "INVALID";
+    }
+}
+
+/* ============================================================================
+ * FILE FORMAT DETECTION
+ * ============================================================================ */
+RiftFileFormat rift_detect_file_format(const char* filename) {
+    if (!filename) return RIFT_FORMAT_UNKNOWN;
+    const char* dot = strrchr(filename, '.');
+    if (!dot) return RIFT_FORMAT_UNKNOWN;
+
+    if (strcmp(dot, ".rift") == 0) return RIFT_FORMAT_RIFT;
+    if (strcmp(dot, ".rf") == 0)   return RIFT_FORMAT_RF;
+    if (strcmp(dot, ".meta") == 0) return RIFT_FORMAT_META;
+    if (strcmp(dot, ".tok") == 0)  return RIFT_FORMAT_TOK;
+    if (strcmp(dot, ".ast") == 0)  return RIFT_FORMAT_AST;
+    if (strcmp(dot, ".c") == 0)    return RIFT_FORMAT_C;
+    return RIFT_FORMAT_UNKNOWN;
+}
+
+const char* rift_file_format_to_string(RiftFileFormat format) {
+    switch (format) {
+        case RIFT_FORMAT_RIFT:    return "RIFT source (.rift)";
+        case RIFT_FORMAT_RF:      return "RF semantic (.rf)";
+        case RIFT_FORMAT_META:    return "Meta triplet (.meta)";
+        case RIFT_FORMAT_TOK:     return "Token stream (.tok)";
+        case RIFT_FORMAT_AST:     return "AST (.ast)";
+        case RIFT_FORMAT_C:       return "C source (.c)";
+        case RIFT_FORMAT_UNKNOWN:
+        default:                  return "Unknown";
+    }
+}
+
+const char* rift_command_output_ext(RiftCommand cmd) {
+    switch (cmd) {
+        case RIFT_CMD_TOKENIZE:  return ".tok";
+        case RIFT_CMD_PARSE:     return ".ast";
+        case RIFT_CMD_ANALYZE:   return ".tast";
+        case RIFT_CMD_GENERATE:  return ".c";
+        case RIFT_CMD_EMIT:      return ".c";
+        case RIFT_CMD_COMPILE:   return ".exe";
+        case RIFT_CMD_NONE:
+        default:                 return NULL;
     }
 }

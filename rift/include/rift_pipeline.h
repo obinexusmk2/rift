@@ -34,6 +34,9 @@ extern "C" {
 #define RIFT_VERSION_PATCH 0
 #define RIFT_VERSION_STRING "1.0.0"
 
+/* Error message buffer size (shared across pipeline and bridge) */
+#define RIFT_ERROR_MESSAGE_SIZE 512
+
 /* ============================================================================
  * STAGE IDENTIFIERS (000-555)
  * ============================================================================ */
@@ -64,7 +67,10 @@ typedef enum {
     TOKEN_TYPE_LITERAL,
     TOKEN_TYPE_OPERATOR,
     TOKEN_TYPE_DELIMITER,
-    TOKEN_TYPE_EOF
+    TOKEN_TYPE_EOF,
+    TOKEN_TYPE_PATTERN_DOUBLE,  /* r"..." - static compile-time pattern */
+    TOKEN_TYPE_PATTERN_SINGLE,  /* r'...' - dynamic runtime pattern */
+    TOKEN_TYPE_MACRO_DEF        /* macro_rules! keyword */
 } TokenType;
 
 typedef union {
@@ -125,7 +131,7 @@ struct RiftPipeline {
     int (*stage_555_bridge)(RiftPipeline* pipeline);
     
     /* Error handling */
-    char error_message[256];
+    char error_message[RIFT_ERROR_MESSAGE_SIZE];
     int error_code;
 };
 
@@ -149,6 +155,38 @@ int rift_stage_555_bridge(RiftPipeline* pipeline);
 /* Utility functions */
 const char* rift_stage_to_string(RiftStage stage);
 const char* rift_token_type_to_string(TokenType type);
+
+/* ============================================================================
+ * FILE FORMAT TYPES
+ * ============================================================================ */
+typedef enum {
+    RIFT_FORMAT_UNKNOWN = 0,
+    RIFT_FORMAT_RIFT,      /* .rift - Full source (meta + semantic) */
+    RIFT_FORMAT_RF,        /* .rf   - Semantic execution file */
+    RIFT_FORMAT_META,      /* .meta - Token triplet metadata */
+    RIFT_FORMAT_TOK,       /* .tok  - Tokenized stream output */
+    RIFT_FORMAT_AST,       /* .ast  - AST serialized output */
+    RIFT_FORMAT_C,         /* .c    - Generated C output */
+} RiftFileFormat;
+
+RiftFileFormat rift_detect_file_format(const char* filename);
+const char* rift_file_format_to_string(RiftFileFormat format);
+
+/* ============================================================================
+ * CLI COMMAND TYPES
+ * ============================================================================ */
+typedef enum {
+    RIFT_CMD_NONE = 0,
+    RIFT_CMD_TOKENIZE,    /* rift tokenize <file> */
+    RIFT_CMD_PARSE,       /* rift parse <file>    */
+    RIFT_CMD_ANALYZE,     /* rift analyze <file>  */
+    RIFT_CMD_GENERATE,    /* rift generate <file> */
+    RIFT_CMD_EMIT,        /* rift emit <file>     */
+    RIFT_CMD_COMPILE,     /* rift compile <file>  */
+} RiftCommand;
+
+/* Output extension for each subcommand */
+const char* rift_command_output_ext(RiftCommand cmd);
 
 #ifdef __cplusplus
 }

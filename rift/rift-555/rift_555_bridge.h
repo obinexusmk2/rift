@@ -21,6 +21,11 @@ extern "C" {
 #include <stdbool.h>
 #include <stddef.h>
 
+/* Error message buffer size (matches rift_pipeline.h) */
+#ifndef RIFT_ERROR_MESSAGE_SIZE
+#define RIFT_ERROR_MESSAGE_SIZE 512
+#endif
+
 /* ============================================================================
  * RIFTBRIDGE VERSION
  * ============================================================================ */
@@ -103,7 +108,7 @@ struct RiftBridge {
     void* nsigii_codec;
     
     /* Error handling */
-    char error_message[256];
+    char error_message[RIFT_ERROR_MESSAGE_SIZE];
     int error_code;
     
     /* Function pointers */
