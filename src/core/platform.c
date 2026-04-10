@@ -1,5 +1,8 @@
 #include "rift/platform.h"
 #include <string.h>
+#if !defined(RIFT_PLATFORM_WINDOWS)
+#  include <time.h>
+#endif
 
 /* Mutex implementation */
 
@@ -86,7 +89,6 @@ double rift_time_ms(void) {
     QueryPerformanceCounter(&counter);
     return (double)counter.QuadPart / (double)freq.QuadPart * 1000.0;
 #else
-    #include <time.h>
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (double)ts.tv_sec * 1000.0 + (double)ts.tv_nsec / 1000000.0;

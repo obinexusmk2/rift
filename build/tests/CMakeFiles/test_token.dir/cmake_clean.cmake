@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "../bin/test_token.exe"
-  "../bin/test_token.exe.manifest"
+  "../bin/test_token"
   "../bin/test_token.pdb"
-  "../lib/libtest_token.dll.a"
-  "CMakeFiles/test_token.dir/test_token.c.obj"
-  "CMakeFiles/test_token.dir/test_token.c.obj.d"
+  "CMakeFiles/test_token.dir/test_token.c.o"
+  "CMakeFiles/test_token.dir/test_token.c.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

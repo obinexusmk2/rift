@@ -8,18 +8,18 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_bridge.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_bridge.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_bridge.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_compile.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_compile.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_compile.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_doctor.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_doctor.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_doctor.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_emit.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_emit.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_emit.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_lang.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_lang.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_lang.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_man.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_man.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_man.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_parse.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_parse.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_parse.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_raf.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_raf.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_raf.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_test.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_test.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_test.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/cmd_tokenize.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_tokenize.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_tokenize.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/src/cli/dispatch.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/dispatch.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/dispatch.c.obj.d"
-  "C:/Users/OBINexus/Projects/rift/rift/tests/test_cli.c" "tests/CMakeFiles/test_cli.dir/test_cli.c.obj" "gcc" "tests/CMakeFiles/test_cli.dir/test_cli.c.obj.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_bridge.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_bridge.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_bridge.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_compile.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_compile.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_compile.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_doctor.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_doctor.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_doctor.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_emit.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_emit.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_emit.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_lang.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_lang.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_lang.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_man.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_man.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_man.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_parse.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_parse.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_parse.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_raf.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_raf.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_raf.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_test.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_test.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_test.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/cmd_tokenize.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_tokenize.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/cmd_tokenize.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/src/cli/dispatch.c" "tests/CMakeFiles/test_cli.dir/__/src/cli/dispatch.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/__/src/cli/dispatch.c.o.d"
+  "/mnt/c/Users/OBINexus/rift/tests/test_cli.c" "tests/CMakeFiles/test_cli.dir/test_cli.c.o" "gcc" "tests/CMakeFiles/test_cli.dir/test_cli.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

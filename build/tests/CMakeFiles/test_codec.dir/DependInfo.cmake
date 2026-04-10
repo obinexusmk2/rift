@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/OBINexus/Projects/rift/rift/tests/test_codec.c" "tests/CMakeFiles/test_codec.dir/test_codec.c.obj" "gcc" "tests/CMakeFiles/test_codec.dir/test_codec.c.obj.d"
+  "/mnt/c/Users/OBINexus/rift/tests/test_codec.c" "tests/CMakeFiles/test_codec.dir/test_codec.c.o" "gcc" "tests/CMakeFiles/test_codec.dir/test_codec.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
