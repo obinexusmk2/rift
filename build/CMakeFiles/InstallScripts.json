@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/OBINexus/rift/build/cmake_install.cmake",
+		"C:/Users/OBINexus/rift/build/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
